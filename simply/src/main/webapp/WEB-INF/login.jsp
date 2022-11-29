@@ -27,7 +27,7 @@
 					<div class="col-md-6">
 
 						<label for="pw" class="form-label">Password</label> <input
-							class="form-control" name="j_password" id="pw" type="text"
+							class="form-control" name="j_password" id="pw" type="password"
 							required="required" />
 
 					</div>
