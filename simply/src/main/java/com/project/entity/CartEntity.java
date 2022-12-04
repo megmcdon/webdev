@@ -1,10 +1,8 @@
 package com.project.entity;
 
 import javax.persistence.*;
-
 @Entity
 @Table(name = "CART")
-@Inheritance(strategy = InheritanceType.JOINED)
 public class CartEntity {
 	
 	@Id
