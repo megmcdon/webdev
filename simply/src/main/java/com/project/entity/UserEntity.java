@@ -15,7 +15,7 @@ public class UserEntity {
 	@Column(name="u_email") private String email;
 	@Column(name="u_password") private String password;
 	@Column(name="u_cc_info") private int cc_info;
-	
+	@Column(name="u_admin") private boolean admin;
 	
 	//getters and setters//
 	
@@ -84,5 +84,13 @@ public class UserEntity {
 		this.cc_info = cc_info;
 	}
 	
+	
+	//admin
+	public boolean GetAdmin() {
+		return admin;
+	}
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 	
 }
