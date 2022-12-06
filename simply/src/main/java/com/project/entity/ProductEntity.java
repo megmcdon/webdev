@@ -13,7 +13,7 @@ public class ProductEntity {
 	@Column(name="p_price") private Double price;
 	@Column(name="p_stock") private int stock;
 	@Column(name="p_category") private String category;
-	@Column(name="p_discount_perc") private int discount_perc;
+	@Column(name="p_discount_perc") private int discountPerc;
 	
 	
 	//getters and setters//
@@ -68,11 +68,11 @@ public class ProductEntity {
 	}
 	
 	//discount_perc
-	public int getDiscount_perc() {
-		return discount_perc;
+	public int getDiscountPerc() {
+		return discountPerc;
 	}
-	public void setPassword(int discount_perc) {
-		this.discount_perc = discount_perc;
+	public void setPassword(int discountPerc) {
+		this.discountPerc = discountPerc;
 	}
 
 	

@@ -8,15 +8,15 @@ public class UserEntity {
 	@Id
 	@GeneratedValue
 	@Column(name="u_id") private int id;
-	@Column(name="u_first_name") private String first_name;
-	@Column(name="u_last_name") private String last_name;
-	@Column(name="u_billing_addr") private String billing_addr;
-	@Column(name="u_shipping_addr") private String shipping_addr;
+	@Column(name="u_first_name") private String firstName;
+	@Column(name="u_last_name") private String lastName;
+	@Column(name="u_billing_addr") private String billingAddr;
+	@Column(name="u_shipping_addr") private String shippingAddr;
 	@Column(name="u_email") private String email;
 	@Column(name="u_password") private String password;
-	@Column(name="u_cc_num") private int cc_num;
-	@Column(name="u_cc_cvv") private int cc_cvv;
-	@Column(name="u_cc_exp") private String cc_exp;
+	@Column(name="u_cc_num") private int ccnum;
+	@Column(name="u_cc_cvv") private int cccvv;
+	@Column(name="u_cc_exp") private String ccexp;
 	@Column(name="u_admin") private boolean admin;
 	
 	//getters and setters//
@@ -30,36 +30,36 @@ public class UserEntity {
 	}
 	
 	//first_name
-	public String getFirst_Name() {
-		return first_name;
+	public String getFirstName() {
+		return firstName;
 	}
 	
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	
 	//last_name
-	public String getLast_name() {
-		return last_name;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	
 	//billing_addr
-	public String getBilling_addr() {
-		return billing_addr;
+	public String getBillingAddr() {
+		return billingAddr;
 	}
-	public void setBilling_addr(String billing_addr) {
-		this.billing_addr = billing_addr;
+	public void setBillingAddr(String billingAddr) {
+		this.billingAddr = billingAddr;
 	}
 	
 	//shipping_addr
-	public String getShipping_addr() {
-		return shipping_addr;
+	public String getShippingAddr() {
+		return shippingAddr;
 	}
-	public void setShipping_Addr(String shipping_addr) {
-		this.shipping_addr = shipping_addr;
+	public void setShipping_Addr(String shippingAddr) {
+		this.shippingAddr = shippingAddr;
 	}
 	
 	//email
@@ -79,25 +79,25 @@ public class UserEntity {
 	}
 	
 	//cc_num
-	public int GetCc_num() {
-		return cc_num;
+	public int GetCcnum() {
+		return ccnum;
 	}
-	public void setCc_num(int cc_num) {
-		this.cc_num = cc_num;
+	public void setCcnum(int ccnum) {
+		this.ccnum = ccnum;
 	}
 	
 	
-	public int getCc_cvv() {
-		return cc_cvv;
+	public int getCccvv() {
+		return cccvv;
 	}
-	public void setCc_cvv(int cc_cvv) {
-		this.cc_cvv = cc_cvv;
+	public void setCccvv(int cccvv) {
+		this.cccvv = cccvv;
 	}
-	public String getCc_exp() {
-		return cc_exp;
+	public String getCcexp() {
+		return ccexp;
 	}
-	public void setCc_exp(String cc_exp) {
-		this.cc_exp = cc_exp;
+	public void setCcexp(String ccexp) {
+		this.ccexp = ccexp;
 	}
 	//admin
 	public boolean GetAdmin() {

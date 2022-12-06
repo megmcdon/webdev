@@ -57,7 +57,7 @@ public class SignupServlet extends HttpServlet {
 
 	/**
 	 * MAINTAINS SAME REQUEST PARAMETERS AS BEFORE
-	 * ~USER SIGNUP~
+	 * SIGNS UP USER AND LOGS IN 
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -66,14 +66,14 @@ public class SignupServlet extends HttpServlet {
 		user.setPassword(request.getParameter("password"));
 		String confirmPassword = request.getParameter("confirmPassword");
 		// TODO: Compare if passwords are same
-		user.setFirst_name(request.getParameter("fname"));
-		user.setLast_name(request.getParameter("lname"));
-		user.setBilling_addr(request.getParameter("ba"));
+		user.setFirstName(request.getParameter("fname"));
+		user.setLastName(request.getParameter("lname"));
+		user.setBillingAddr(request.getParameter("ba"));
 		user.setShipping_Addr(request.getParameter("sa"));
 		user.setEmail(request.getParameter("email"));
-		user.setCc_num(Integer.parseInt(request.getParameter("cc")));
-		user.setCc_exp(request.getParameter("expiry"));
-		user.setCc_cvv(Integer.parseInt(request.getParameter("cvv")));
+		user.setCcnum(Integer.parseInt(request.getParameter("cc")));
+		user.setCcexp(request.getParameter("expiry"));
+		user.setCccvv(Integer.parseInt(request.getParameter("cvv")));
 		// sign up user
 		if(db.signUp(user)) {
 			// automatically login

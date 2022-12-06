@@ -34,25 +34,29 @@ public class CartServlet extends HttpServlet {
 	@Autowired
 	DBAccessService db;
 	
+	/**
+	 * GETS CART AND FORWARDS REQUEST ATTRIBUTE cart TO /cart.jsp
+	 * IF USER NOT LOGGED IN, FORWARD TO /login.jsp
+	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
 		UserEntity user=(UserEntity) session.getAttribute("user");
 		if(user==null) {
-			request.getRequestDispatcher("/WEB-INF/signup.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
 
 		}
 		else {
 		request.setAttribute("cart", db.getCart(user.getId()));
-		request.getRequestDispatcher("/WEB-INF/checkout.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/cart.jsp").forward(request, response);
 		}
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 *SAVES ITEM TO CART, TAKES REQUEST PARAMETERS p_id AND quantity
+	 *REFUSES TO ADD MORE QUANTITY TO CART THAN AVAILABLE STOCK
 	 */
-	//This will save an item to cart, needs request parameters p_id and quantity
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
@@ -63,11 +67,14 @@ public class CartServlet extends HttpServlet {
 		}
 		else {
 			CartEntity add = new CartEntity();
-			add.setP_id(Integer.parseInt(request.getParameter("p_id")));
+			add.setPid(Integer.parseInt(request.getParameter("p_id")));
 			add.setQuantity(Integer.parseInt(request.getParameter("quantity")));
-			add.setU_id(user.getId());
+			add.setUid(user.getId());
 			if(db.addToCart(add)) {
-				
+				//TODO redirect client back to whatever page they were on
+			}
+			else {
+				//TODO redirect client and tell them there isn't enough stock 
 			}
 			
 		}

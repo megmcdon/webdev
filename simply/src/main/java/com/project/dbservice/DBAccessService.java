@@ -32,14 +32,14 @@ public class DBAccessService {
 		return true;
 	}
 	
-	public ArrayList<CartEntity> getCart(int u_id){
-		return (ArrayList<CartEntity>)cRepo.findByU_id(u_id);
+	public ArrayList<CartEntity> getCart(int uid){
+		return (ArrayList<CartEntity>)cRepo.findByUid(uid);
 	}
 	
 	public boolean addToCart(CartEntity cart) {
-		ProductEntity product = pRepo.findById(cart.getP_id());
+		ProductEntity product = pRepo.findById(cart.getPid());
 		pRepo.saveAndFlush(product);
-		Optional<CartEntity> cartRecord = cRepo.findByU_idAndP_id(cart.getU_id(), cart.getP_id());
+		Optional<CartEntity> cartRecord = cRepo.findByUidAndPid(cart.getUid(), cart.getPid());
 		//increase number in cart if already in cart
 		if(cartRecord.isPresent()) {
 			cart.setQuantity(cartRecord.get().getQuantity()+cart.getQuantity());
@@ -62,8 +62,8 @@ public class DBAccessService {
 		return (ArrayList<ProductEntity>) pRepo.findByCategory(category);
 	}
 	
-	public ProductEntity getProduct(int p_id) {
-		return pRepo.findById(p_id);
+	public ProductEntity getProduct(int pid) {
+		return pRepo.findById(pid);
 	}
 
 }

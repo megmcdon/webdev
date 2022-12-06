@@ -9,7 +9,7 @@ public class OrdersEntity {
 	@Id
 	@GeneratedValue
 	@Column(name="o_id") private int id;
-	@Column(name="o_u_id") private int u_id;
+	@Column(name="o_u_id") private int uid;
 	@Column(name="o_total") private Double total;
 	
 	
@@ -24,11 +24,11 @@ public class OrdersEntity {
 	}
 	
 	//u_id
-	public int getU_id() {
-		return u_id;
+	public int getUid() {
+		return uid;
 	}
-	public void setU_id(int u_id) {
-		this.u_id = u_id;
+	public void setUid(int u_id) {
+		this.uid = uid;
 	}
 	
 	//total
