@@ -17,3 +17,6 @@ INSERT INTO product (p_id,p_name,p_description, p_price, p_out_of_stock, p_categ
 INSERT INTO product (p_id,p_name,p_description, p_price, p_out_of_stock, p_category, p_discount_perc) VALUES(12, 'Iced Coffee - Small', 'This a small cup of iced coffee', 3.00,false,'brew',0);
 INSERT INTO product (p_id,p_name,p_description, p_price, p_out_of_stock, p_category, p_discount_perc) VALUES(13, 'Iced Coffee - Medium', 'This a medium cup of iced coffee', 4.00,false,'brew',0);
 INSERT INTO product (p_id,p_name,p_description, p_price, p_out_of_stock, p_category, p_discount_perc) VALUES(14, 'Iced Coffee - Large', 'This a large cup of iced coffee', 4.50,false,'brew',0);
+
+
+INSERT INTO users (u_id,u_first_name,u_password,u_admin) VALUES(1, 'admin', 'mypassword',true);
