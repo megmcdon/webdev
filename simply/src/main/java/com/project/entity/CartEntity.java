@@ -40,7 +40,7 @@ public class CartEntity {
 	}
 	
 	//quantity
-	public int GetQuantity() {
+	public int getQuantity() {
 		return quantity;
 	}
 	public void setQuantity(int quantity) {

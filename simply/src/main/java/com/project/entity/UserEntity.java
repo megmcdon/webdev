@@ -14,7 +14,9 @@ public class UserEntity {
 	@Column(name="u_shipping_addr") private String shipping_addr;
 	@Column(name="u_email") private String email;
 	@Column(name="u_password") private String password;
-	@Column(name="u_cc_info") private int cc_info;
+	@Column(name="u_cc_num") private int cc_num;
+	@Column(name="u_cc_cvv") private int cc_cvv;
+	@Column(name="u_cc_exp") private String cc_exp;
 	@Column(name="u_admin") private boolean admin;
 	
 	//getters and setters//
@@ -76,15 +78,27 @@ public class UserEntity {
 		this.password = password;
 	}
 	
-	//cc_info
-	public int GetCc_info() {
-		return cc_info;
+	//cc_num
+	public int GetCc_num() {
+		return cc_num;
 	}
-	public void setCc_info(int cc_info) {
-		this.cc_info = cc_info;
+	public void setCc_num(int cc_num) {
+		this.cc_num = cc_num;
 	}
 	
 	
+	public int getCc_cvv() {
+		return cc_cvv;
+	}
+	public void setCc_cvv(int cc_cvv) {
+		this.cc_cvv = cc_cvv;
+	}
+	public String getCc_exp() {
+		return cc_exp;
+	}
+	public void setCc_exp(String cc_exp) {
+		this.cc_exp = cc_exp;
+	}
 	//admin
 	public boolean GetAdmin() {
 		return admin;

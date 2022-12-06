@@ -11,7 +11,7 @@ public class ProductEntity {
 	@Column(name="p_name") private String name;
 	@Column(name="p_description") private String description;
 	@Column(name="p_price") private Double price;
-	@Column(name="p_out_of_stock") private Boolean out_of_stock;
+	@Column(name="p_stock") private int stock;
 	@Column(name="p_category") private String category;
 	@Column(name="p_discount_perc") private int discount_perc;
 	
@@ -47,16 +47,16 @@ public class ProductEntity {
 	public Double getPrice() {
 		return price;
 	}
-	public void setBilling_addr(Double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 	
 	//out_of_stock
-	public Boolean getOut_of_stock() {
-		return out_of_stock;
+	public int getStock() {
+		return stock;
 	}
-	public void setShipping_Addr(Boolean out_of_stock) {
-		this.out_of_stock = out_of_stock;
+	public void setStock(int stock) {
+		this.stock = stock;
 	}
 	
 	//category
