@@ -8,6 +8,7 @@ import java.util.Optional;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.project.dbservice.DBAccessService;
 import com.project.entity.UserEntity;
@@ -30,6 +32,17 @@ import com.project.repo.UserRepo;
 public class SignupServlet extends HttpServlet {	
 	@Autowired
 	DBAccessService db;
+	
+	public void init(ServletConfig config) {
+	    try {
+			super.init(config);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
+	      config.getServletContext());
+	  }
 
 	/**
 	 * ~LOGGS IN USER~

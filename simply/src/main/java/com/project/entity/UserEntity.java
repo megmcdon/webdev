@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class UserEntity {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="u_id") private int id;
 	@Column(name="u_first_name") private String firstName;
 	@Column(name="u_last_name") private String lastName;

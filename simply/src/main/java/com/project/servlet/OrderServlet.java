@@ -1,7 +1,9 @@
 package com.project.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,9 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.project.dbservice.DBAccessService;
 import com.project.entity.CartEntity;
+import com.project.entity.OrdersEntity;
 import com.project.entity.UserEntity;
 
 @WebServlet("/orders")
@@ -22,9 +26,31 @@ public class OrderServlet extends HttpServlet {
 	@Autowired
 	DBAccessService db;
 	
+	public void init(ServletConfig config) {
+	    try {
+			super.init(config);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
+	      config.getServletContext());
+	  }
 	
+	//RETURNS REQUEST ATTRIBUTE orders
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession(true);
+		UserEntity user=(UserEntity) session.getAttribute("user");
+		if(user==null) {
+			request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+
+		}
+		else {
+			request.setAttribute("orders", db.getOrders(user.getId()));
+			request.getRequestDispatcher("/WEB-INF/orders.jsp").forward(request, response);
+			
+		}
 		//TODO return ArrayList<OrderEntity> with orders from user
 		System.out.println("pass");
 	}
@@ -33,7 +59,26 @@ public class OrderServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//TODO create order, save order, empty cart, send email confirmation, update stock
-		System.out.println("pass");
+		HttpSession session = request.getSession(true);
+		UserEntity user=(UserEntity) session.getAttribute("user");
+		if(user==null) {
+			request.getRequestDispatcher("/WEB-INF/login.jsp").forward(request, response);
+
+		}
+		else {
+		ArrayList<CartEntity> cart = db.getCart(user.getId());
+		
+		if(db.validateOrder(cart)) {
+			//TODO: comfirmation email
+			OrdersEntity newOrder = db.confirmOrder(cart, user.getId());
+			//TODO: do something with newOrder
+		}
+		else {
+			//TODO: order failure scenario
+		}
+		
+		
+		}
 		
 	}
 

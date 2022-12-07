@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class OrdersEntity {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="o_id") private int id;
 	@Column(name="o_u_id") private int uid;
 	@Column(name="o_total") private Double total;

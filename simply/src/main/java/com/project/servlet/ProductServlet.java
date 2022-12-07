@@ -3,6 +3,7 @@ package com.project.servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import com.project.dbservice.DBAccessService;
 import com.project.entity.CartEntity;
@@ -18,9 +20,20 @@ import com.project.entity.ProductEntity;
 import com.project.entity.UserEntity;
 
 @WebServlet("/products")
-public class ProductServlet {
+public class ProductServlet extends HttpServlet{
 	@Autowired
 	DBAccessService db;
+	
+	public void init(ServletConfig config) {
+	    try {
+			super.init(config);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,
+	      config.getServletContext());
+	  }
 	
 	/**
 	 * LOOKS FOR PARAMETERS category OR p_id and RETURNS ACCORDINGLY

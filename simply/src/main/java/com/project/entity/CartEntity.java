@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class CartEntity {
 	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="c_id") private int id;
 	@Column(name="c_p_id") private int pid;
 	@Column(name="c_u_id") private int uid;
