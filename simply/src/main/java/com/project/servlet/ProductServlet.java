@@ -27,7 +27,6 @@ public class ProductServlet {
 	 * REDIRECT WITH category OR NO PARAMETERS IS TO /products.jsp WITH REQUEST ATTRIBUTE products
 	 * REDIRECT WITH p_id IS TO /product.jsp WITH REQUEST ATTRIBUTE product
 	 */
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
@@ -58,9 +57,10 @@ public class ProductServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	//TODO use this to let admin alter products
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//TODO use this to let admin alter products
 			
 	}
 		
