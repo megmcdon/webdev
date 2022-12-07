@@ -31,7 +31,7 @@ public class ProductEntity {
 		return name;
 	}
 	
-	public void setFirst_name(String name) {
+	public void setFirstName(String name) {
 		this.name = name;
 	}
 	

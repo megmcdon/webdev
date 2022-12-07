@@ -27,7 +27,7 @@ public class OrdersEntity {
 	public int getUid() {
 		return uid;
 	}
-	public void setUid(int u_id) {
+	public void setUid(int uid) {
 		this.uid = uid;
 	}
 	
