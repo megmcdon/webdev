@@ -3,6 +3,7 @@ package com.project.servlet;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +19,8 @@ import com.project.dbservice.DBAccessService;
 import com.project.entity.CartEntity;
 import com.project.entity.OrdersEntity;
 import com.project.entity.UserEntity;
+
+import com.project.email.*;
 
 @WebServlet("/orders")
 public class OrderServlet extends HttpServlet {
@@ -71,11 +74,16 @@ public class OrderServlet extends HttpServlet {
 		if(db.validateOrder(cart)) {
 			//TODO: comfirmation email
 			OrdersEntity newOrder = db.confirmOrder(cart, user.getId());
+			
+			System.out.println(newOrder);
+			
 			//TODO: do something with newOrder
 		}
 		else {
 			//TODO: order failure scenario
 		}
+		
+
 		
 		
 		}
