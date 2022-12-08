@@ -26,7 +26,8 @@ public class SpringTests {
 	
 	@GetMapping("/product")
 	public ArrayList<ProductEntity> getProducts(){
-		return db.getAllProducts();	}
+		return db.getAllProducts();	
+	}
 
 
 
