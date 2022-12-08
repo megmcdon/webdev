@@ -19,4 +19,4 @@ INSERT INTO product (p_id,p_name,p_description, p_price, p_stock, p_category, p_
 INSERT INTO product (p_id,p_name,p_description, p_price, p_stock, p_category, p_discount_perc) VALUES(14, 'Iced Coffee - Large', 'This a large cup of iced coffee', 4.50,5,'brew',0);
 
 
-INSERT INTO users (u_id,u_first_name,u_password,u_admin) VALUES(1, 'admin', 'mypassword',true);
+INSERT INTO users (u_id,u_email,u_password,u_admin) VALUES(1, 'admin', 'mypassword',true);

@@ -41,7 +41,6 @@ public class DBAccessService {
 	
 	public boolean addToCart(CartEntity cart) {
 		ProductEntity product = pRepo.findById(cart.getPid());
-		pRepo.saveAndFlush(product);
 		Optional<CartEntity> cartRecord = cRepo.findByUidAndPid(cart.getUid(), cart.getPid());
 		//increase number in cart if already in cart
 		if(cartRecord.isPresent()) {
