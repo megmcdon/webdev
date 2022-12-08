@@ -74,10 +74,15 @@ public class OrderServlet extends HttpServlet {
 		if(db.validateOrder(cart)) {
 			//TODO: comfirmation email
 			OrdersEntity newOrder = db.confirmOrder(cart, user.getId());
+			newOrder.setTotal(Double.parseDouble(request.getParameter("total")));
+			newOrder.setUid(user.getId());
 			
-			System.out.println(newOrder);
+			
 			
 			//TODO: do something with newOrder
+			
+			
+			
 		}
 		else {
 			//TODO: order failure scenario
