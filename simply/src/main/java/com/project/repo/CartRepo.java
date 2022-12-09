@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.project.entity.CartEntity;
 
-public interface CartRepo extends JpaRepository<CartEntity, Integer>  {
-	List<CartEntity> findByUid(int uid);
-	Optional<CartEntity> findByUidAndPid(int uid, int pid);
+public interface CartRepo extends JpaRepository<CartEntity, Integer> {
+
+    List<CartEntity> findByUserId(int uid);
+
+    Optional<CartEntity> findByUserIdAndProductId(int uid, int pid);
 }
