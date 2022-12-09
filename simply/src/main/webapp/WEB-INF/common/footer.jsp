@@ -15,7 +15,8 @@
 
                 <h4>ABOUT US</h4>
 
-                <p>Quis autem velis et reprehender etims quiste voluptate velit esse quam nihil etsa illum sedit consequatur quias voluptas sit netsum  etis nisle varius qui sequi.</p>
+                <p> Here at Simply Coffee we pride ourselves in delivering the 
+                    finest coffee, beans and merchandise known to allkind.</p>
 
                 <a href="${pageContext.request.contextPath}/about" class="btn btn-lg btn-yellow-x-small scrool">About Us</a>
 
@@ -29,11 +30,11 @@
 
                 <h4>CONTACT DETAILS</h4>
 
-                <p class="contact_info"><i class="fa fa-map-marker"></i> Quis autem velis et reprehender etims quiste voluptate velit esse quam nihil etsa </p>
+                <p class="contact_info"><i class="fa fa-map-marker"></i>Baltimore, Maryland</p>
 
-                <p class="contact_info"><i class="fa fa-phone"></i> +xx xxx xxx xxx / +xx  xxx xxx xxx</p>
+                <p class="contact_info"><i class="fa fa-phone"></i>(410) 516-7456</p>
 
-                <p class="contact_info"><i class="fa fa-envelope-square"></i> <a href="mailto:contact@restaurant.com">example@email.com</a></p>
+                <p class="contact_info"><i class="fa fa-envelope-square"></i> <a href="mailto:simplycoffee@sc.com">simplycoffee@sc.com"</a></p>
 
                 <a href="${pageContext.request.contextPath}/contact" class="btn btn-lg btn-yellow-x-small scrool">Contact Us</a>
 

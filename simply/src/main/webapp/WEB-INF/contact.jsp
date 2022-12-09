@@ -36,7 +36,7 @@
 
                                 <h2 class="section-title white wow bounceIn" data-wow-delay="1s">Get In Touch</h2>
 
-                                <p class="hero-text wow fadeInUp" data-wow-delay="2s">For any enquiries you can give us a call at <strong>+xx xxx xx xx xxx</strong><br>Alternatively we can get in touch using the form bellow.</p>
+                                <p class="hero-text wow fadeInUp" data-wow-delay="2s">For any enquiries you can give us a call at <strong>+1(410)516-7456</strong><br>Alternatively we can get in touch using the form bellow.</p>
 
                             </div>
                             <!--end col-md-10-->
@@ -71,7 +71,7 @@
 
                                 <h3 class="section-title small-margin wow fadeIn" data-wow-delay="0.3s">CONTACT FORM</h3>
 
-                                <p class="wow fadeInUp" data-wow-delay="1s">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam odit corrupti ea libero. Praesentium voluptas, provident soluta libero assumenda nostrum. Cum porro at facere repellat.</p>
+                                <p class="wow fadeInUp" data-wow-delay="1s">If this is regarding your order, please either make sure to include your order number.</p>
 
                                 <!--begin contact-wrapper-->
                                 <div class="contact-wrapper">

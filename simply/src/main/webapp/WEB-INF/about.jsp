@@ -33,9 +33,16 @@
 
                                 <span class="comic-text white wow fadeIn" data-wow-delay="0.5s">Simply Coffee</span>
 
-                                <h2 class="section-title white wow bounceIn" data-wow-delay="1s">--- Slogan here ---</h2>
+                                <h2 class="section-title white wow bounceIn" data-wow-delay="1s">Organic & Fair Trade</h2>
 
-                                <p class="hero-text wow fadeInUp" data-wow-delay="2s">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloribus assumenda quis provident iusto id suscipit ipsum, ut alias repellat quia aut itaque, labore temporibus minus facere ex, nesciunt a.</p>
+                                <p class="hero-text wow fadeInUp" data-wow-delay="2s">
+                                Here at Simply Coffee we pride ourselves in delivering the 
+                                finest coffee, beans and merchandise known to allkind. All Coffee
+                                products sold are Fair Trade certified meaning that the coffee
+                                has not been audited throughout the supply chain to meet certain
+                                sustainability and labor standards. To top that all off, all 
+                                merchandise sends money back to the factory workers who make
+                                our product. </p>
 
                             </div>
                             <!--end col-md-10-->
@@ -73,7 +80,17 @@
 
                                 <h2 class="section-title">Our Story</h2>
 
-                                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos vitae placeat nulla eveniet quisquam. Cupiditate ipsa alias commodi rerum voluptatum repellat dolor earum. Sint, eligendi nam, et dolor aperiam odit possimus porro eos ullam excepturi nostrum magnam temporibus pariatur, nemo non iste facilis nesciunt aut ut cupiditate error! Illo, ipsum? Nam ad, libero dicta adipisci magni accusamus reiciendis, sunt id fugiat non, atque eum odio nemo. Ipsa quibusdam eligendi necessitatibus sed architecto saepe iste, consequatur vero nisi numquam possimus quis voluptate nostrum nam, natus velit non! Eum voluptas repudiandae laborum recusandae corrupti iste odit, blanditiis minus, cupiditate unde libero amet.</p>
+                                <p>We believe that sustainable and equitable trade relationships should
+                                be the standard across the globe. When you treat workers and farmers 
+                                fairly, everyone benefits. By making all our products fair trade we 
+                                help businesses source products that are ethically and sustainably 
+                                produced which also gives our consumer confidence that the people behind
+                                the products get a fair deal for their hard work.</p>
+                                
+                                <p>We also ensure that all products sold are of the highest quality. To 
+                                ensure freshness, we roast our beans in house which not only lets us 
+                                control the roast level but also allows us to add subtle nuances that make
+                                our coffee like no other.</p>
 
                             </div>
                             <!--end col-md-6-->
