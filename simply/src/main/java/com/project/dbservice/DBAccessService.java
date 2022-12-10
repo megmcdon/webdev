@@ -27,6 +27,8 @@ import com.project.email.*;
 
 @Service
 public class DBAccessService {
+    private static final String CHECKOUT_CART = "checkout-cart";
+    private static final String ADD_PRODUCTS = "add-products";
 
     @Autowired
     CartRepo cRepo;
@@ -71,21 +73,41 @@ public class DBAccessService {
         }
     }
 
-    public boolean addToCart(CartEntity cart) {
-        ProductEntity product = cart.getProduct();
-        UserEntity user = cart.getUser();
-        Optional<CartEntity> cartRecord = cRepo.findByUserIdAndProductId(user.getId(), product.getId());
-        //increase number in cart if already in cart
-        if (cartRecord.isPresent()) {
-            cart.setQuantity(cartRecord.get().getQuantity() + cart.getQuantity());
-        }
-        if (product.getStock() - cart.getQuantity() < 0) {
-            return false;
-        } else {
-            cRepo.saveAndFlush(cart);
+    public boolean addToCart( CartEntity newEntity, String uri )
+    {
+        ProductEntity product = newEntity.getProduct();
+        UserEntity user = newEntity.getUser();
+
+        Optional<CartEntity> cartRecord = cRepo.findByUserIdAndProductId( user.getId(), product.getId() );
+        if( cartRecord.isPresent() )
+        {
+            CartEntity previousEntity = cartRecord.get();
+
+            int newQuantity = 0;
+            if( CHECKOUT_CART.equalsIgnoreCase( uri ) )
+            {
+                newQuantity = newEntity.getQuantity();
+            }
+            else if( ADD_PRODUCTS.equalsIgnoreCase( uri ) )
+            {
+                newQuantity = previousEntity.getQuantity() + newEntity.getQuantity();
+            }
+
+            if( product.getStock() - newQuantity < 0 )
+            {
+                return false;
+            }
+            previousEntity.setQuantity( newQuantity );
+            cRepo.saveAndFlush( previousEntity );
             return true;
         }
 
+        if( product.getStock() - newEntity.getQuantity() < 0 )
+        {
+            return false;
+        }
+        cRepo.saveAndFlush( newEntity );
+        return true;
     }
 
     public ArrayList<ProductEntity> getAllProducts() {

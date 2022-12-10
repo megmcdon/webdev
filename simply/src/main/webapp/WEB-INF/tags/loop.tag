@@ -48,6 +48,7 @@
 
 								<form method="post" action="<c:url value="/cart"/>">
 									<input type="hidden" name="pid" value="${p.id}" />
+									<input type="hidden" name="uri" value="add-products" />
 									<div class="row mb-2">
 										<div class="col-sm-4 col-4">
 											<input name="quantity" class="form-control" type="number" step="1" value="0" min="1" max="10"

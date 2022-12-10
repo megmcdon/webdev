@@ -36,11 +36,10 @@
                         </div>
                         <!--begin row-->
                         <div class="row">
-                            <h3>Cart Total $${0.00 }</h3>
+                            <h3>Cart Total $${totalPrice}</h3>
                             <c:choose>
                                 <c:when test="${not empty cart }">
-                                    <form method="post"
-                                          action="${pageContext.request.contextPath}/checkout">
+                                    <form method="post" action="<c:url value="/cart/confirm"/>">
                                         <div class="row mb-4">
                                             <div class="col-md-6">
                                                 <div class="form-group">

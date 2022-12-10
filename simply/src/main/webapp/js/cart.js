@@ -8,6 +8,7 @@ let updateQty = (e) => {
 	const data = new FormData();
 	data.append("pid", dataset.id);
 	data.append("quantity", target.value);
+	data.append("uri", "checkout-cart");
 	data.append("xhr", true);
 	const params = new URLSearchParams(data);
 	fetch(`${dataset.ctx}/cart`, {

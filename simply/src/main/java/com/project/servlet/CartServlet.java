@@ -1,5 +1,6 @@
 package com.project.servlet;
 
+import com.project.email.MailUtilGmail;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.project.dbservice.DBAccessService;
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.mail.MessagingException;
 
 /**
  * Servlet implementation class Checkout RENAMED TO /cart!!!!
@@ -64,7 +67,7 @@ public class CartServlet {
      * @return
      */
     @PostMapping
-    public String addToCart(Authentication auth, @RequestParam("pid") Integer pid, @RequestParam("quantity") Integer quantity, RedirectAttributes ra) {
+    public String addToCart( Authentication auth, @RequestParam( "pid" ) Integer pid, @RequestParam( "quantity" ) Integer quantity, @RequestParam( "uri" ) String uri, RedirectAttributes ra ) {
         String email = auth.getName();
         Optional<UserEntity> oUser = db.findUserByEmail(email);
         UserEntity user = oUser.get();
@@ -78,7 +81,7 @@ public class CartServlet {
         add.setProduct(db.getProduct(pid));
         add.setQuantity(quantity);
         add.setUser(user);
-        if (db.addToCart(add)) {
+        if( db.addToCart( add, uri ) ) {
             //TODO redirect client back to whatever page they were on
             ra.addFlashAttribute("msg", "Item Added");
         } else {
@@ -91,24 +94,63 @@ public class CartServlet {
     }
 
     @GetMapping
-    @RequestMapping("/checkout")
-    public String checkout(Authentication auth, Model model) {
-        String email = auth.getName();
-        Optional<UserEntity> oUser = db.findUserByEmail(email);
-        UserEntity user = oUser.get();
-        model.addAttribute("user", user);
-        final List<CartEntity> cart = db.getCart(auth.getName());
-        model.addAttribute("cart", cart);
+    @RequestMapping( "/checkout" )
+    public String checkout( Authentication auth, Model model )
+    {
+        String authEmail = auth.getName();
+
+        Optional<UserEntity> oUser = db.findUserByEmail( authEmail );
+        if( oUser.isPresent() )
+        {
+            UserEntity user = oUser.get();
+            model.addAttribute( "user", user );
+        }
+
+        final List<CartEntity> cart = db.getCart( authEmail );
+        model.addAttribute( "cart", cart );
+
+        double totalPrice = 0;
+        for( CartEntity o : cart )
+        {
+            totalPrice = totalPrice + ( o.getQuantity() * o.getProduct().getPrice() );
+        }
+        model.addAttribute( "totalPrice", totalPrice );
+
         return "checkout";
-    }
-    
-    
-    @PostMapping("/confirm")
-    public String confirm(){
-        //a
-        //send email
-        //clear cart
-        return "redirect:/";
+   
     }
 
+    @PostMapping( "/confirm" )
+    public String confirm( Authentication auth, Model model )
+    {
+        String authEmail = auth.getName();
+
+        Optional<UserEntity> oUser = db.findUserByEmail( authEmail );
+        if( oUser.isPresent() )
+        {
+            UserEntity user = oUser.get();
+            try
+            {
+                MailUtilGmail.sendMail( user.getEmail(), "test@gmail.com", "Simply Coffee - Confirm Order", "", true );
+            }
+            catch( Exception ex )
+            {
+                ex.printStackTrace();
+            }
+            model.addAttribute( "user", user );
+
+            final List<CartEntity> cart = db.getCart( authEmail );
+            model.addAttribute( "cart", cart );
+
+            double totalPrice = 0;
+            for( CartEntity o : cart )
+            {
+                totalPrice = totalPrice + ( o.getQuantity() * o.getProduct().getPrice() );
+            }
+            model.addAttribute( "totalPrice", totalPrice );
+
+            return "confirmation";
+        }
+        return "login";
+    }
 }
