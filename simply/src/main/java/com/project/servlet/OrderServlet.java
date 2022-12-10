@@ -22,7 +22,7 @@ import com.project.entity.UserEntity;
 
 import com.project.email.*;
 
-@WebServlet("/orders")
+@WebServlet("/checkout")
 public class OrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
