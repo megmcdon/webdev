@@ -214,6 +214,19 @@ public class DBAccessService {
         }
         
 	}
+	
+	public boolean updateStock(int pid, int stock) {
+		ProductEntity update = pRepo.findById(pid);
+		if(stock>=0) {
+			update.setStock(stock);
+			pRepo.saveAndFlush(update);
+			return true;
+		}
+		else {
+			return false;
+		}
+		
+	}
 
 
 }
