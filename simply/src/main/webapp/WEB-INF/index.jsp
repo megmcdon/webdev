@@ -60,7 +60,7 @@
 
                                     <!-- LAYER NR. 5 -->
                                     <div class="tp-caption Agency-SubTitle tp-resizeme" data-height="none" data-hoffset="['0','0','0','0']" data-responsive_offset="on" data-splitin="none" data-splitout="none" data-start="1500" data-transform_idle="o:1;" data-transform_in="y:50px;opacity:0;s:2000;e:Power2.easeInOut;" data-transform_out="opacity:0;s:300;s:300;" data-voffset="['109','109','25','25']" data-whitespace="['nowrap','nowrap','normal','normal']" data-width="['none','none','480','360']" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" id="slide-898-layer-4" style="z-index: 9; white-space: nowrap;text-align:center;font-style:italic;">
-                                        Freshly prepared, good coffee and beans specialities.
+                                        Organic & Fair Trade
                                     </div>
 
                                     <!-- LAYER NR. 5 -->
@@ -125,7 +125,7 @@
                                         <h3 class="blog-title"><a href="${pageContext.request.contextPath}/products?category=beans">Beans</a></h3>
 
 
-                                        <p>Quis autem velis et reprehender etims quiste voluptate velit esse quam nihil etsa illum sedit consequatur quias voluptas sit netsum.</p>
+                                        <p>All beans are roasted upon arrival to ensure freshness and for us to control the flavor profile. We make sure that we source organic, fair trade beans so we can make the world a better place (one cup at a time!).</p>
 
                                         <a href="${pageContext.request.contextPath}/products?category=beans" class="btn btn-lg btn-yellow-small scrool">DISCOVER MORE</a>
 
@@ -158,7 +158,7 @@
                                         <h3 class="blog-title"><a href="${pageContext.request.contextPath}/products?category=brewing">Brewing Equipment</a></h3>
 
 
-                                        <p>Quis autem velis et reprehender etims quiste voluptate velit esse quam nihil etsa illum sedit consequatur quias voluptas sit netsum.</p>
+                                        <p>Our highly trained baristas will ensure you have the best dose of caffeine in every cup</p>
 
                                         <a href="${pageContext.request.contextPath}/products?category=brewing" class="btn btn-lg btn-yellow-small scrool">DISCOVER MORE</a>
 
@@ -191,7 +191,7 @@
                                         <h3 class="blog-title"><a href="${pageContext.request.contextPath}/products?category=merch">Merchandise</a></h3>
 
 
-                                        <p>Quis autem velis et reprehender etims quiste voluptate velit esse quam nihil etsa illum sedit consequatur quias voluptas sit netsum.</p>
+                                        <p>All merchandise sold is made from organic fair trade cotton for the softest expierence of your life. </p>
 
                                         <a href="${pageContext.request.contextPath}/products?category=merch" class="btn btn-lg btn-yellow-small scrool">DISCOVER MORE</a>
 
@@ -229,7 +229,7 @@
                             <!--begin col-md-10-->
                             <div class="col-md-10 col-md-offset-1 text-center">
 
-                                <p class="hero-text2 white wow bounceIn">"Coffee makes me focus. On weighing the sugar. On sieving the flour. I find it calming, rewarding because, in fairness, is sort of magic - you start off with all disparate stuff like natural butter and fresh eggs, and what you end up with is so totally different."</p>
+                                <p class="hero-text2 white wow bounceIn">"It’s amazing how the world begins to change through the eyes of a cup of coffee." <br> <br> <i>~ Donna A. Favors</i> </p>
 
                             </div>
                             <!--end col-md-6-->
@@ -259,9 +259,19 @@
 
                                 <h2 class="section-title">Our Story</h2>
 
-                                <p>Curabitur quas nets lacus ets nulat iaculis loremis etis nisle varius vitae seditum fugiatum ligula aliquam qui sequi. Lorem ipsum dolor sit amet, consectetur adipiscing elit rutrum eleif arcu sit aspernatur nets fugit, sed quia.</p>
+                                <p>We believe that sustainable and equitable trade relationships should
+                                be the standard across the globe. When you treat workers and farmers 
+                                fairly, everyone benefits. By making all our products fair trade we 
+                                help businesses source products that are ethically and sustainably 
+                                produced which also gives our consumer confidence that the people behind
+                                the products get a fair deal for their hard work.</p>
+                                
+                                <p>We also ensure that all products sold are of the highest quality. To 
+                                ensure freshness, we roast our beans in house which not only lets us 
+                                control the roast level but also allows us to add subtle nuances that make
+                                our coffee like no other.</p>
 
-                                <a href="about.html" class="btn btn-lg btn-yellow">About Us</a>
+                                <a href="${pageContext.request.contextPath}/about"  class="btn btn-lg btn-yellow">About Us</a>
 
                             </div>
                             <!--end col-md-6-->

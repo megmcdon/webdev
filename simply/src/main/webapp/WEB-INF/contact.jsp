@@ -36,7 +36,7 @@
 
                                 <h2 class="section-title white wow bounceIn" data-wow-delay="1s">Get In Touch</h2>
 
-                                <p class="hero-text wow fadeInUp" data-wow-delay="2s">For any enquiries you can give us a call at <strong>+1(410)516-7456</strong><br>Alternatively we can get in touch using the form bellow.</p>
+                                <p class="hero-text wow fadeInUp" data-wow-delay="2s">For any enquiries you can give us a call at <strong>+1 (410) 516-7456</strong><br>Alternatively we can get in touch using the form bellow.</p>
 
                             </div>
                             <!--end col-md-10-->
