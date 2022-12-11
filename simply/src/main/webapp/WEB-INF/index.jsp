@@ -229,7 +229,7 @@
                             <!--begin col-md-10-->
                             <div class="col-md-10 col-md-offset-1 text-center">
 
-                                <p class="hero-text2 white wow bounceIn">"It’s amazing how the world begins to change through the eyes of a cup of coffee." <br> <br> <i>~ Donna A. Favors</i> </p>
+                                <p class="hero-text2 white wow bounceIn">"It’s amazing how the world begins to change through the eyes of a cup of coffee." <br> <br> <i>-Donna A. Favors</i> </p>
 
                             </div>
                             <!--end col-md-6-->

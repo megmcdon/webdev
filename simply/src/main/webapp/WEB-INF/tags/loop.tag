@@ -15,8 +15,13 @@
 					<!--begin menu-image-->
 					<div class="menu-image">
 					
-						<img src="<c:url value="/images/Beans.webp" />" >
-							
+						<div class="popup-wrapper">
+                         	<div class="popup-gallery">
+                         	   <a href="/images/products/products${p.id}.webp" class="popup3 blog-item-pic"><img src="<c:url value="/images/products/products${p.id}.webp"/>" ><span class="eye-wrapper"><i class="fa fa-expand eye-icon"></i></span></a>
+                         		
+                         	</div>
+                         </div>	
+                         
 					</div>
 					<!--end menu-image-->
 						
