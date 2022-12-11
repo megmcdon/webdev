@@ -35,3 +35,5 @@ INSERT INTO product (p_id,p_name,p_description, p_price, p_stock, p_category, p_
 
 INSERT INTO users (u_id,u_first_name,u_password,u_admin,u_cc_num,u_cc_cvv,u_cc_exp,u_email) VALUES(1, 'admin', 'admin@sc',true,1234,1234,'12/30','admin@sc');
 INSERT INTO users (u_id,u_first_name,u_password,u_admin,u_cc_num,u_cc_cvv,u_cc_exp,u_email) VALUES(2, 'test', 'a',false,123,123,'12/30','a@a');
+INSERT INTO users (u_id,u_first_name,u_password,u_admin,u_cc_num,u_cc_cvv,u_cc_exp,u_email) VALUES(3, 'Meghan', 'pass',false,123,123,'12/30','meghanymcdonough@gmail.com');
+

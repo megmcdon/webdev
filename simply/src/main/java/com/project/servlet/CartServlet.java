@@ -165,7 +165,7 @@ public class CartServlet {
                 model.addAttribute( "totalPrice", totalPrice );
             	
             	String to = user.getEmail();
-            	String from = "682.81.fa22.mmcdon39@gmail.com";
+            	String from = "	Simply Coffee <682.81.fa22.mmcdon39@gmail.com>";
             	String subject="Simply Coffee - Order Confirmation";
             	
             	String itemList="";
