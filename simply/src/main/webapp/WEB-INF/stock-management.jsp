@@ -17,13 +17,16 @@
             <header class="pb-3 mb-4 border-bottom">
                 <jsp:include page="/WEB-INF/common/nav.jsp" />
             </header>
-
+			
+			<!-- begin section white -->
             <section class="section-white" style="padding: 200px 0px;">
                 <c:if test="${not empty error}">
                     <div class="alert alert-danger">
                         ${error}
                     </div>
                 </c:if>
+
+                <!-- begin container -->                
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12 text-center">
@@ -32,6 +35,9 @@
                         </div>
                     </div>
                 </div>
+				<!-- end container -->                
+                
+                <!-- begin container -->
                 <div class="container">
                     <div class="row">
                         <jh:stock type="Beans" products="${beans}"></jh:stock>
@@ -39,7 +45,10 @@
                         <jh:stock type="Merchandise" products="${merch}"></jh:stock>
                     </div>
                 </div>
+				<!-- end container -->                
+                
             </section>
+			<!-- end section-white -->                
 
             <footer class="pt-3 mt-4 text-muted border-top">
                 <jsp:include page="/WEB-INF/common/footer.jsp" />
