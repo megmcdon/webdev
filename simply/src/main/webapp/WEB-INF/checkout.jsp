@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -36,7 +37,7 @@
                         </div>
                         <!--begin row-->
                         <div class="row">
-                            <h3>Cart Total $${totalPrice}</h3>
+                            <h3>Cart Total $<fmt:formatNumber type="number" minFractionDigits="2" value="${totalPrice}"/></h3>
                             <c:choose>
                                 <c:when test="${not empty cart }">
                                     <form method="post" action="<c:url value="/cart/confirm"/>">

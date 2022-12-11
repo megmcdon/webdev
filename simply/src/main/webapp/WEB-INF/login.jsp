@@ -23,7 +23,7 @@
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <span class="comic-text wow fadeIn" data-wow-delay="0.5s">Simply Coffee</span>
-                                <h2 class="section-title wow bounceIn" data-wow-delay="1s">Login</h2>
+                                <h2 class="section-title wow bounceIn" data-wow-delay="1s">${isAdmin ? "Admin Login" : "Customer Login"}</h2>
                             </div>
                         </div>
                         <!--begin row-->
@@ -47,9 +47,11 @@
                         </div>
                         <!--end row-->
 
-                        <div class="row" id="contact-form" style="text-align:left; padding:0px 15px;">
-                            <a class="ms-2" href="<c:url value="/user"/>">Don't Have an Account? Sign Up.</a>
-                        </div>
+                        <c:if test="${!isAdmin}">
+                            <div class="row" id="contact-form" style="text-align:left; padding:0px 15px;">
+                                <a class="ms-2" href="<c:url value="/user"/>">Don't Have an Account? Sign Up.</a>
+                            </div>
+                        </c:if>
 
                     </div>
                     <!--end container-->

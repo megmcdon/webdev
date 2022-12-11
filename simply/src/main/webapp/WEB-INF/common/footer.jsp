@@ -11,7 +11,7 @@
         <div class="row footer-top">
 
             <!--begin col-md-3 -->
-            <div class="col-md-6 padding-bottom-50">
+            <div class="col-md-4 padding-bottom-50">
 
                 <h4>ABOUT US</h4>
 
@@ -26,7 +26,7 @@
 
 
             <!--begin col-md-3 -->
-            <div class="col-md-6 padding-bottom-50">
+            <div class="col-md-4 padding-bottom-50">
 
                 <h4>CONTACT DETAILS</h4>
 
@@ -41,6 +41,13 @@
             </div>
             <!--end col-md-3 -->
 
+            <!--begin col-md-3 -->
+            <div class="col-md-4 padding-bottom-50">
+                <h4>Admin Login</h4>
+                <p> Log into the system as an admin to manage the inventories and others etc.</p>
+                <a href="${pageContext.request.contextPath}/login?admin=true" class="btn btn-lg btn-yellow-x-small scrool">Login</a>
+            </div>
+            <!--end col-md-3 -->
         </div>
         <!--end row -->
 

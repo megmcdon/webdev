@@ -2,6 +2,7 @@
 <%@attribute name="type" required="true"%>
 <%@attribute name="products" required="true" type="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:if test="${not empty products }">
 
 	<!--begin col-md-6-->
@@ -33,7 +34,7 @@
 						
 							<h5>${p.name}</h5>
 							
-							<p class="price">$${p.price} </p>  <!-- change the price -->
+							<p class="price">$<fmt:formatNumber type="number" minFractionDigits="2" value="${p.price}"/></p>
 
 							
 							
@@ -45,7 +46,7 @@
 						<p class="menu-ingredients">${p.description }</p>
 
 						<c:choose>
-							<c:when test="${p.stock le 0}">
+							<c:when test="${p.stock == 0}">
 								<div class="alert alert-danger" style="height:34px; padding:6px; text-align:center">Out of stock</div>
 							</c:when>
 							<c:otherwise>

@@ -32,6 +32,9 @@ public class SecurityConfiguration {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SecurityConfiguration.class);
 
+    @Autowired
+    private DBAccessService db;
+
     @Bean
     public SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**").authorizeRequests()
@@ -58,6 +61,13 @@ public class SecurityConfiguration {
                     @Override
                     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws ServletException, IOException {
                         LOGGER.info("Successfully Authenticated {}", authentication.getName());
+
+                        Optional<UserEntity> oUser = db.findUserByEmail( authentication.getName() );
+                        if( oUser.isPresent() && oUser.get().isAdmin() )
+                        {
+                            response.sendRedirect( request.getContextPath() + "/adminPortal" );
+                        }
+
                         super.onAuthenticationSuccess(request, response, authentication);
                     }
                 }).failureHandler(new AuthenticationFailureHandler() {

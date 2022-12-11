@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -87,7 +88,7 @@
                                                                     <h6>${p.product.name}</h6>
                                                                 </div>
                                                             </td>
-                                                            <td class="cart-product-price"><c:out value="$${p.product.price}" /></td>
+                                                            <td class="cart-product-price">$<fmt:formatNumber type="number" minFractionDigits="2" value="${p.product.price}"/></td>
                                                             <td class="cart-product-quantity">
                                                                 <div class="product-quantity">
                                                                     <input required data-ctx="${pageContext.request.contextPath}"
@@ -95,7 +96,7 @@
                                                                            value="${p.quantity}" />
                                                                 </div>
                                                             </td>
-                                                            <td class="cart-product-total"> $${p.quantity * p.product.price}</td>
+                                                            <td class="cart-product-total">$<fmt:formatNumber type="number" minFractionDigits="2" value="${p.quantity * p.product.price}"/></td>
 
                                                         </tr>
                                                     </c:forEach>
@@ -112,7 +113,7 @@
                                                     </div>
                                                     <!-- .col-md-6 end -->
                                                     <div class="col-xs-12 col-sm-6 col-md-6 text-right ">
-                                                        <h5>Total: <span> $${totalPrice}</span></h5>
+                                                        <h5>Total: <span> $<fmt:formatNumber type="number" minFractionDigits="2" value="${totalPrice}"/></span></h5>
                                                     </div>
                                                     <!-- .col-md-6 end -->
                                             	</div>

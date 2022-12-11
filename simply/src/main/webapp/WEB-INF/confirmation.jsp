@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -47,14 +48,14 @@
                         <div class="row">
                             <div class="col-md-2 text-left">${item.product.name}</div>
                             <div class="col-md-1 text-center">${item.quantity}</div>
-                            <div class="col-md-1 text-left">$${item.quantity * item.product.price}</div>
+                            <div class="col-md-1 text-left">$<fmt:formatNumber type="number" minFractionDigits="2" value="${item.quantity * item.product.price}"/></div>
                             <div class="col-md-8"></div>
                         </div>
                     </c:forEach>
                     <div class="row">
                         <div class="col-md-2 text-left"><h5>TOTAL</h5></div>
                         <div class="col-md-1"></div>
-                        <div class="col-md-1 text-left"><h5>$${totalPrice}</h5></div>
+                        <div class="col-md-1 text-left"><h5>$<fmt:formatNumber type="number" minFractionDigits="2" value="${totalPrice}"/></h5></div>
                         <div class="col-md-8"></div>
                     </div>  --%>
                     
@@ -90,9 +91,9 @@
                                                                     <h6>${p.product.name}</h6>
                                                                 </div>
                                                             </td>
-                                                            <td class="cart-product-price"><c:out value="$${p.product.price}" /></td>
+                                                            <td class="cart-product-price">$<fmt:formatNumber type="number" minFractionDigits="2" value="${p.product.price}"/></td>
                                                             <td class="cart-product-quantity">${p.quantity}</td>
-                                                            <td class="cart-product-total"> $${p.quantity * p.product.price}</td>
+                                                            <td class="cart-product-total"> $<fmt:formatNumber type="number" minFractionDigits="2" value="${p.quantity * p.product.price}"/></td>
 
                                                         </tr>
                                                     </c:forEach>
@@ -108,7 +109,7 @@
                                                        
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6 col-md-6 text-right ">
-                                                        <h5>Total: <span> $${totalPrice}</span></h5>
+                                                        <h5>Total: <span> $<fmt:formatNumber type="number" minFractionDigits="2" value="${totalPrice}"/></span></h5>
                                                     </div>
                                                     <!-- .col-md-6 end -->
                                                 </div>

@@ -11,10 +11,7 @@ import java.util.Optional;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.mail.MessagingException;
@@ -51,6 +48,14 @@ public class CartServlet {
 //
 //        } else {
         model.addAttribute("cart", cart);
+
+        double totalPrice = 0;
+        for( CartEntity o : cart )
+        {
+            totalPrice = totalPrice + ( o.getQuantity() * o.getProduct().getPrice() );
+        }
+        model.addAttribute( "totalPrice", totalPrice );
+
         return "cart";
 //            request.getRequestDispatcher("/WEB-INF/cart.jsp").forward(request, response);
 //        }
@@ -91,6 +96,22 @@ public class CartServlet {
 
 //        }
         return "redirect:/cart";
+    }
+
+    /**
+     * UPDATE ITEM STOCK
+     *
+     * @param auth  auth
+     * @param pid   pid
+     * @param stock stock
+     * @return page
+     */
+    @PutMapping
+    @RequestMapping( "/stock" )
+    public String updateStock( Authentication auth, @RequestParam( "pid" ) Integer pid, @RequestParam( "stock" ) Integer stock )
+    {
+        db.updateStock( pid, stock );
+        return "redirect:/adminPortal";
     }
 
     @GetMapping
