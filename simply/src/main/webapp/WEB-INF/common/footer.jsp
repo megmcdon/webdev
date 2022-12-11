@@ -32,7 +32,7 @@
 
                 <p class="contact_info"><i class="fa fa-map-marker"></i>Baltimore, Maryland</p>
 
-                <p class="contact_info"><i class="fa fa-phone"></i>(410) 516-7456</p>
+                <p class="contact_info"><i class="fa fa-phone"></i>+1(410)516-7456</p>
 
                 <p class="contact_info"><i class="fa fa-envelope-square"></i> <a href="mailto:simplycoffee@sc.com">simplycoffee@sc.com"</a></p>
 

@@ -131,7 +131,12 @@ public class CartServlet {
             UserEntity user = oUser.get();
             try
             {
-                MailUtilGmail.sendMail( user.getEmail(), "test@gmail.com", "Simply Coffee - Confirm Order", "", true );
+                
+            	
+            	
+            	
+            	
+            	MailUtilGmail.sendMail( user.getEmail(), "test@gmail.com", "Simply Coffee - Confirm Order", "", true );
             }
             catch( Exception ex )
             {
