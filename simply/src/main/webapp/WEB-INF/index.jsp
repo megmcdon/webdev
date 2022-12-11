@@ -17,10 +17,6 @@
 
                 <div id="hero-section" class="home-hero-section" style="width:100%; height:100vh;">
                 
-                <img alt="" style="position:absolute; top:0px; width:100%; height:100%;" data-bgparallax="3" data-bgposition="center center" data-duration="30000" data-ease="Linear.easeNone" data-kenburns="on" data-no-retina="" data-offsetend="0 0" data-offsetstart="0 0" data-rotateend="0" data-rotatestart="0" data-scaleend="100" data-scalestart="140" src="${pageContext.request.contextPath }/images/home1.jpg">
-				<div style="position:absolute; top:0px; width:100%; height:100%;" data-basealign="slide" data-height="full" data-hoffset="['0','0','0','0']" data-responsive="off" data-responsive_offset="off" data-start="0" data-transform_idle="o:1;" data-transform_in="opacity:0;s:2000;e:Power2.easeInOut;" data-transform_out="opacity:0;s:500;s:500;" data-voffset="['0','0','0','0']" data-whitespace="nowrap" data-width="full" data-x="['center','center','center','center']" data-y="['middle','middle','middle','middle']" id="slide-898-layer-1" style="z-index: 5;background-color:rgba(34, 34, 34, 0.45);border-color:rgba(0, 0, 0, 0);">
-                </div>
-
                     <div class="rev_slider_wrapper fullscreen-container" data-alias="agency-website" id="rev_slider_280_1_wrapper" style="background-color:#222222;padding:0px;">
 
                         <!-- START REVOLUTION SLIDER 5.1.4 fullscreen mode -->

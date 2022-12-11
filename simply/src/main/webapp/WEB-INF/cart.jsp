@@ -81,7 +81,7 @@
                                                                     <i class="fa fa-close"></i>
                                                                 </button>
                                                                 <div class="cart-product-img menu-img">
-                                                                    <img src="${pageContext.request.contextPath}/images/Beans.jpg" alt="product"/>
+                                                                    <img src="${pageContext.request.contextPath}/images/products/products${p.id}.webp" alt="product"/>
                                                                 </div>
                                                                 <div class="cart-product-name">
                                                                     <h6>${p.product.name}</h6>
@@ -106,6 +106,16 @@
                                         </c:choose>
                                         <tr class="cart-product-action">
                                             <td colspan="4">
+                                            	<div class="row">
+                                            	 <div class="col-xs-12 col-sm-6 col-md-6">
+                                                       
+                                                    </div>
+                                                    <!-- .col-md-6 end -->
+                                                    <div class="col-xs-12 col-sm-6 col-md-6 text-right ">
+                                                        <h5>Total: <span> $${totalPrice}</span></h5>
+                                                    </div>
+                                                    <!-- .col-md-6 end -->
+                                            	</div>
                                                 <div class="row clearfix">
                                                     <div class="col-xs-12 col-sm-6 col-md-6">
                                                        
@@ -116,6 +126,7 @@
                                                         <a class="btn btn-lg btn-yellow-small scrool" href="<c:url value="/cart/checkout" />">Checkout</a>
                                                     </div>
                                                     <!-- .col-md-6 end -->
+                                                    
                                                 </div>
                                             </td>
                                         </tr>
@@ -131,6 +142,9 @@
                     </div>
                     <!-- .container end -->
                 </section>
+                
+                
+                
                 <!-- #shopcart end -->
 
 

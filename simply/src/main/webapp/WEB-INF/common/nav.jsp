@@ -11,7 +11,7 @@
 <i class="fa fa-bars"></i>
 </a>
 
-            <a href="${pageContext.request.contextPath}" class="navbar-brand brand scrool"><img src="${pageContext.request.contextPath }/images/lg1.png" alt="logo" class="width-100"></a>
+            <a href="${pageContext.request.contextPath}/" class="navbar-brand brand scrool"><img src="${pageContext.request.contextPath }/images/lg1.png" alt="logo" class="width-100"></a>
         </div>
 
         <div id="navbar-collapse-02" class="collapse navbar-collapse">
