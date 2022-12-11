@@ -34,7 +34,7 @@
 
                 <p class="contact_info"><i class="fa fa-phone"></i>+1 (410) 516-7456</p>
 
-                <p class="contact_info"><i class="fa fa-envelope-square"></i> <a href="mailto:simplycoffee@sc.com">simplycoffee@sc.com"</a></p>
+                <p class="contact_info"><i class="fa fa-envelope-square"></i> <a href="mailto:simplycoffee@sc.com">simplycoffee@sc.com</a></p>
 
                 <a href="${pageContext.request.contextPath}/contact" class="btn btn-lg btn-yellow-x-small scrool">Contact Us</a>
 
@@ -43,7 +43,7 @@
 
             <!--begin col-md-3 -->
             <div class="col-md-4 padding-bottom-50">
-                <h4>Admin Login</h4>
+                <h4>ADMIN LOGIN</h4>
                 <p> Log into the system as an admin to manage the inventories and others etc.</p>
                 <a href="${pageContext.request.contextPath}/login?admin=true" class="btn btn-lg btn-yellow-x-small scrool">Login</a>
             </div>

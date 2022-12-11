@@ -151,7 +151,7 @@
                                     <!--begin blog-item_inner -->
                                     <div class="blog-item-inner">
 
-                                        <h3 class="blog-title"><a href="${pageContext.request.contextPath}/products?category=brewing">Brewing Equipment</a></h3>
+                                        <h3 class="blog-title"><a href="${pageContext.request.contextPath}/products?category=brewing">Coffee</a></h3>
 
 
                                         <p>Our highly trained baristas will ensure you have the best dose of caffeine in every cup</p>

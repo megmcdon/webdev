@@ -27,7 +27,7 @@
                         <a 
                             href="${pageContext.request.contextPath}/products?category=beans">Beans</a>
                         <a 
-                            href="${pageContext.request.contextPath}/products?category=brew">Brewing Equipment</a>
+                            href="${pageContext.request.contextPath}/products?category=brew">Coffee</a>
                         <a 
                             href="${pageContext.request.contextPath}/products?category=merch">Merchandise</a>
                     </div>

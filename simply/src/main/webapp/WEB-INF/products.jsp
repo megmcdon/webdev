@@ -63,7 +63,7 @@
                     <div class="container">
                         <div class="row">
                             <jh:loop type="Beans" products="${beans}"></jh:loop>
-                            <jh:loop type="Brewing Equipment" products="${brew}"></jh:loop>
+                            <jh:loop type="Coffee" products="${brew}"></jh:loop>
                             <jh:loop type="Merchandise" products="${merch}"></jh:loop>
                             </div>
                         </div>
