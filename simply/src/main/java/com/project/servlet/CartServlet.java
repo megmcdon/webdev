@@ -192,10 +192,14 @@ public class CartServlet {
             	boolean isHTML=true;
             	
             	MailUtilGmail.sendMail(to, from, subject, body, isHTML);
+            	
+            	System.out.println("email sent successfully");
+                
             }
-            catch( Exception ex )
+            catch( MessagingException e )
             {
-                ex.printStackTrace();
+                e.printStackTrace();
+            	
             }
             /*
             model.addAttribute( "user", user );

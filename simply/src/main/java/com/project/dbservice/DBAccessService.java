@@ -127,94 +127,12 @@ public class DBAccessService {
 		return (ArrayList<OrdersEntity>) oRepo.findByUid(uid);
 	}
 	
-	/*
-	//structure of the entity changed here!!!!
-	public boolean validateOrder(ArrayList<CartEntity> cart) {
-		//check that stock is available
-		for(int x=0; x<cart.size(); x+=1) {
-			if(pRepo.findById(cart.get(x).getPid()).getStock()-cart.get(x).getQuantity()<0) {
-				return false;
-			}
-		}
-		return true;
-	}
-	
-	/*
-	//structure of the entity changed here!!!!
-	public OrdersEntity confirmOrder(ArrayList<CartEntity> cart, int uid) {
-		//update stock and caclulate total
-				double orderTotal=0;
-				for(int x=0; x<cart.size(); x+=1) {
-					orderTotal+=cart.get(x).getQuantity()*pRepo.findById(cart.get(x).getPid()).getPrice();
-					int newStock=pRepo.findById(cart.get(x).getPid()).getStock()-cart.get(x).getQuantity();
-					ProductEntity update = pRepo.findById(cart.get(x).getPid());
-					update.setStock(newStock);
-					pRepo.saveAndFlush(update);
-				}
-				//save order to database
-				OrdersEntity newOrder = new OrdersEntity();
-				newOrder.setTotal(orderTotal);
-				newOrder.setUid(uid);
-				oRepo.saveAndFlush(newOrder);
-				return newOrder;
-	}
-	*/
 	
 	public String formatTotal(double total) {
 		return String.format("$%,.2f", total);
 	}
 	
-	public String sendEmail(String to, String name,double total,int OrderId, String itemsHTML) {
 
-		
-        String from = "682.81.fa22.mmcdon39@gmail.com";
-        String subject = "Simply Coffee Order Confirmation: Order #"+OrderId;
-
-        String body = "<html>\n"
-        		+ "<head>\n"
-        		+ "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"
-        		+ "<title>"+subject+"</title>\n"
-        		+ "</head>\n"
-        		+ "<body>\n"
-        		+ "	<h1>Thank you for ordering with us!</h1>\n"
-        		+ "Hello, <b>"
-        		+ name
-        		+ "!	</b>\n"
-        		+ "	<br>\n"
-        		+ "	<br> Thank you for placing an order with us. Your total is\n"
-        		+ formatTotal(total)
-        		+ "	<br>\n"
-        		+ "</b> below are the items included in your order:\n"
-        		+  itemsHTML
-        		+ "	<br>\n"
-        		+ "</b> Thank you for shopping with us!\n"
-        		+ "	<br>\n"
-        		+ "</body>\n"
-        		+ "</html>";
-        
-        
-        
-        boolean isBodyHTML = true;
-
-        try {
-            //MailUtilLocal.sendMail(to, from, subject, body, isBodyHTML);
-            MailUtilGmail.sendMail(to, from, subject, body, isBodyHTML);
-            return "email sent successfully";
-        } catch (MessagingException e) {
-            System.out.println(
-                    "Unable to send email. \n"
-                    + "Here is the email you tried to send: \n"
-                    + "=====================================\n"
-                    + "TO: " + to + "\n"
-                    + "FROM: " + from + "\n"
-                    + "SUBJECT: " + subject + "\n"
-                    + "\n"
-                    + body + "\n\n");
-        	return "email sent unsuccessfully";
-        }
-        
-	}
-	
 	public boolean updateStock(int pid, int stock) {
 		ProductEntity update = pRepo.findById(pid);
 		if(stock>=0) {
