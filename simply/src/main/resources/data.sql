@@ -33,5 +33,6 @@ INSERT INTO product (p_id,p_name,p_description, p_price, p_stock, p_category, p_
 INSERT INTO product (p_id,p_name,p_description, p_price, p_stock, p_category, p_discount_perc) VALUES(11, 'Latte', 'Better latte than never!<br> Made with our signature freshly roasted expresso beans and organic milk of your choice.', 4.00,4,'brew',0);
 INSERT INTO product (p_id,p_name,p_description, p_price, p_stock, p_category, p_discount_perc) VALUES(12, 'Cappuchino', 'There are no jokes for a cappuchino, just drink it...<br> Made with our signature freshly roasted expresso beans and organic milk of your choice.', 4.50,5,'brew',0);
 
+INSERT INTO users (u_id,u_first_name,u_password,u_admin,u_cc_num,u_cc_cvv,u_cc_exp,u_email) VALUES(2, 'meghan', 'pass',false,1234,1234,'12/30','meghanymcdonough@gmail.com');
 
 INSERT INTO users (u_id,u_first_name,u_password,u_admin,u_cc_num,u_cc_cvv,u_cc_exp,u_email) VALUES(1, 'admin', 'mypassword',true,1234,1234,'12/30','admin@sc');

@@ -31,11 +31,11 @@
                             <!--begin col-md-10-->
                             <div class="col-md-10 col-md-offset-1 text-center">
 
-                                <span class="comic-text white wow fadeIn" data-wow-delay="0.5s">Simply Coffee</span>
+                                <span class="comic-text white wow fadeIn" data-wow-delay="0.5s">Organic & Fair Trade</span>
 
-                                <h2 class="section-title white wow bounceIn" data-wow-delay="1s">--- Slogan here ---</h2>
+                                <h2 class="section-title white wow bounceIn" data-wow-delay="1s"></h2>
 
-                                <p class="hero-text wow fadeInUp" data-wow-delay="2s">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis doloribus assumenda quis provident iusto id suscipit ipsum, ut alias repellat quia aut itaque, labore temporibus minus facere ex, nesciunt a.</p>
+                                <p class="hero-text wow fadeInUp" data-wow-delay="2s">Please use the below buttons to update your cart and checkout when you are ready!</p>
 
                             </div>
                             <!--end col-md-10-->

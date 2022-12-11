@@ -131,17 +131,73 @@ public class CartServlet {
             UserEntity user = oUser.get();
             try
             {
-                
+            	model.addAttribute( "user", user );
+
+                final List<CartEntity> cart = db.getCart( authEmail );
+                model.addAttribute( "cart", cart );
+
+                double totalPrice = 0;
+                for( CartEntity o : cart )
+                {
+                    totalPrice = totalPrice + ( o.getQuantity() * o.getProduct().getPrice() );
+                }
+                model.addAttribute( "totalPrice", totalPrice );
             	
+            	String to = user.getEmail();
+            	String from = "682.81.fa22.mmcdon39@gmail.com";
+            	String subject="Simply Coffee - Order Confirmation";
             	
+            	String itemList="";
+            	for (int i=0; i < db.getCart(authEmail).size();i++) {
+            		itemList=itemList+"<tr>\n"
+            				+ "<th>"
+            				+ db.getCart(authEmail).get(i).getProduct().getName()
+            				+"</th>\n"
+            				+ "<th>"
+            				+ db.getCart(authEmail).get(i).getQuantity()
+            				+"</th>\n"
+            				+ "<th>"
+            				+ db.getCart(authEmail).get(i).getProduct().getPrice()*db.getCart(authEmail).get(i).getQuantity()
+            				+"</th>\n";
+            	}
             	
+            	            	
+            	String body="<html>\n"
+                		+ "<head>\n"
+                		+ "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n"
+                		+ "<title>"+subject+"</title>\n"
+                		+ "</head>\n"
+                		+ "<body>\n"
+                		+ "	<h1>Simply Coffee thanks you for ordering with us!</h1>\n"
+                		+ "Hello, <b>"
+                		+ user.getFirstName()
+                		+ "!</b>\n"
+                		+ "	<br> <br>\n"
+                		+ "Your total today is: <b>"
+                		+ db.formatTotal(totalPrice)
+                		+ "</b> <br> <br>"
+                		+ "<table style=\"border: 1px solid black; margin-left: auto; margin-right: auto;\">"
+                		+ "<tbody>\n"
+                		+ "<tr>\n"
+                		+ "<th>Item</th>\n"
+                		+ "<th>Quantity</th>\n"
+                		+ "<th>Price</th>\n"
+                		+ "</tr>"
+                		+ itemList
+                		+ "</tbody>\n"
+                		+ "	</table>"
+                		+ "</body>\n"
+                		+ "</html>";
             	
-            	MailUtilGmail.sendMail( user.getEmail(), "test@gmail.com", "Simply Coffee - Confirm Order", "", true );
+            	boolean isHTML=true;
+            	
+            	MailUtilGmail.sendMail(to, from, subject, body, isHTML);
             }
             catch( Exception ex )
             {
                 ex.printStackTrace();
             }
+            /*
             model.addAttribute( "user", user );
 
             final List<CartEntity> cart = db.getCart( authEmail );
@@ -154,6 +210,7 @@ public class CartServlet {
             }
             model.addAttribute( "totalPrice", totalPrice );
 
+             */
             return "confirmation";
         }
         return "login";
