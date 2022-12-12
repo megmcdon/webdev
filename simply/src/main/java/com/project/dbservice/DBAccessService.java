@@ -4,8 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
-import javax.mail.MessagingException;
-
+import com.project.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -83,6 +82,11 @@ public class DBAccessService {
         if( cartRecord.isPresent() )
         {
             CartEntity previousEntity = cartRecord.get();
+            if( newEntity.getQuantity() == 0 )
+            {
+                cRepo.delete( previousEntity );
+                return true;
+            }
 
             int newQuantity = 0;
             if( CHECKOUT_CART.equalsIgnoreCase( uri ) )
@@ -127,13 +131,19 @@ public class DBAccessService {
 	public ArrayList<OrdersEntity> getOrders(int uid){
 		return (ArrayList<OrdersEntity>) oRepo.findByUid(uid);
 	}
-	public void createOrder(int uid, double total) {
-		OrdersEntity order = new OrdersEntity();
-		order.setUid(uid);
-		order.setTotal(total);
-		order.setDate(LocalDate.now());
-		oRepo.saveAndFlush(order);
-	}
+
+	public void createOrder( int uid, List<CartEntity> carts, double total) {
+        OrdersEntity order = new OrdersEntity();
+        order.setTotal( total );
+        order.setUid( uid );
+        order.setDate( LocalDate.now() );
+        OrdersEntity response = oRepo.save( order );
+        for( CartEntity cart : carts )
+        {
+            cart.setOrder( response );
+            cRepo.save( cart );
+        }
+    }
 	
 	
 	public boolean checkout(int uid) {

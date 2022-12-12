@@ -35,30 +35,34 @@
                     <section id="shopcart" class="shop shop-cart bg-gray section-white">
                         <div class="container">
                             <div class="row">
-                                <table class="table table-bordered">
-                                    <tr class="cart-product">
-                                        <th>ID</th>
-                                        <th>Date</th>
-                                        <th>Items</th>
-                                        <th>Price</th>
-                                        <th>Quantity</th>
-                                        <th>Total</th>
-                                    </tr>
-                                    <c:choose>
-                                        <c:when test="${not empty orders}">
-                                            <c:forEach items="${orders}" var="o">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="cart-table table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
                                                 <tr class="cart-product">
-                                                    <td>${o.id}</td>
-                                                    <td>${o.date}</td>
-                                                    <td>name</td>
-                                                    <td>$<fmt:formatNumber type="number" minFractionDigits="2" value="0"/></td>
-                                                    <td>0</td>
-                                                    <td>$<fmt:formatNumber type="number" minFractionDigits="2" value="0"/></td>
+                                                    <th class="cart-product-date">Date</th>
+                                                    <th class="cart-product-item" style="width: 60%;">Product</th>
+                                                    <th class="cart-product-price">Price</th>
+                                                    <th class="cart-product-quantity">Quantity</th>
+                                                    <th class="cart-product-total">Total</th>
                                                 </tr>
-                                            </c:forEach>
-                                        </c:when>
-                                    </c:choose>
-                                </table>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach items="${orders}" var="o">
+                                                    <c:forEach items="${o.carts}" var="c">
+                                                        <tr class="cart-product">
+                                                            <td class="cart-product-date">${o.date}</td>
+                                                            <td class="cart-product-item flex items-center justify-between"><div class="cart-product-name"><h6>${c.product.name}</h6></div></td>
+                                                            <td class="cart-product-price">$<fmt:formatNumber type="number" minFractionDigits="2" value="${c.product.price}"/></td>
+                                                            <td class="cart-product-quantity">${c.quantity}</td>
+                                                            <td class="cart-product-total"> $<fmt:formatNumber type="number" minFractionDigits="2" value="${c.quantity * c.product.price}"/></td>
+                                                        </tr>
+                                                    </c:forEach>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>

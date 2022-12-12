@@ -79,29 +79,22 @@
                                             <c:choose>
                                                 <c:when test="${not empty cart }">
                                                     <c:forEach items="${cart}" var="p">
-                                                        <tr class="cart-product">
-                                                            <td class="cart-product-item flex items-center justify-between">
-<%--                                                                 <button data-ctx="${pageContext.request.contextPath}" data-id="${p.product.id}" class="cart-product-remove delete flex items-center justify-center">
-                                                                    <i class="fa fa-close"></i>
-                                                                </button> --%>
-                                                                <div class="cart-product-img menu-img">
-                                                                    <img src="${pageContext.request.contextPath}/images/products/products${p.id}.webp" alt="product"/>
-                                                                </div>
-                                                                <div class="cart-product-name">
-                                                                    <h6>${p.product.name}</h6>
-                                                                </div>
-                                                            </td>
-                                                            <td class="cart-product-price">$<fmt:formatNumber type="number" minFractionDigits="2" value="${p.product.price}"/></td>
-                                                            <td class="cart-product-quantity">
-                                                                <div class="product-quantity">
-                                                                    <input required data-ctx="${pageContext.request.contextPath}"
-                                                                           data-id="${p.product.id }" type="number" class="form-control qty"
-                                                                           value="${p.quantity}" />
-                                                                </div>
-                                                            </td>
-                                                            <td class="cart-product-total">$<fmt:formatNumber type="number" minFractionDigits="2" value="${p.quantity * p.product.price}"/></td>
-
-                                                        </tr>
+                                                        <c:if test="${p.quantity > 0}">
+                                                            <tr class="cart-product">
+                                                                <td class="cart-product-item flex items-center justify-between">
+                                                                    <div class="cart-product-name">
+                                                                        <h6>${p.product.name}</h6>
+                                                                    </div>
+                                                                </td>
+                                                                <td class="cart-product-price">$<fmt:formatNumber type="number" minFractionDigits="2" value="${p.product.price}"/></td>
+                                                                <td class="cart-product-quantity">
+                                                                    <div class="product-quantity">
+                                                                        <input required data-ctx="${pageContext.request.contextPath}" data-id="${p.product.id }" type="number" class="form-control qty" min="0" value="${p.quantity}" />
+                                                                    </div>
+                                                                </td>
+                                                                <td class="cart-product-total">$<fmt:formatNumber type="number" minFractionDigits="2" value="${p.quantity * p.product.price}"/></td>
+                                                            </tr>
+                                                        </c:if>
                                                     </c:forEach>
                                                 </c:when>
                                                 <c:otherwise>

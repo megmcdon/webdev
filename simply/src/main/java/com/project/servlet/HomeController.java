@@ -1,6 +1,7 @@
 package com.project.servlet;
 
 import com.project.dbservice.DBAccessService;
+import com.project.entity.OrdersEntity;
 import com.project.entity.ProductEntity;
 import com.project.entity.UserEntity;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,7 +52,8 @@ public class HomeController
             Optional<UserEntity> oUser = db.findUserByEmail( auth.getName() );
             if( oUser.isPresent() )
             {
-                model.addAttribute( "orders", db.getOrders( oUser.get().getId() ) );
+                ArrayList<OrdersEntity> orders = db.getOrders( oUser.get().getId() );
+                model.addAttribute( "orders", orders );
                 setAuthParameters( model, auth );
                 return "account";
             }

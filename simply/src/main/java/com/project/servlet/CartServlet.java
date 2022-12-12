@@ -172,8 +172,8 @@ public class CartServlet {
                     totalPrice = totalPrice + ( o.getQuantity() * o.getProduct().getPrice() );
                 }
                 model.addAttribute( "totalPrice", totalPrice );
-                db.createOrder(user.getId(), totalPrice);
-            	
+                db.createOrder(user.getId(), cart, totalPrice);
+
             	String to = user.getEmail();
             	String from = "	Simply Coffee <682.81.fa22.mmcdon39@gmail.com>";
             	String subject="Simply Coffee - Order Confirmation";
