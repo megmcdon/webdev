@@ -2,7 +2,10 @@ package com.project.servlet;
 
 import com.project.dbservice.DBAccessService;
 import com.project.entity.ProductEntity;
+import com.project.entity.UserEntity;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/")
@@ -29,6 +33,23 @@ public class HomeController {
         model.addAttribute( "isAdmin", isAdmin );
         //login page
         return "login";
+    }
+    
+    @GetMapping
+    @RequestMapping( "/account" )
+    public String accountInfo( Model model, Authentication auth) {
+    	 String authEmail = auth.getName();
+
+         Optional<UserEntity> oUser = db.findUserByEmail( authEmail );
+         if( oUser.isPresent() )
+         {
+        	 model.addAttribute("orders", db.getOrders(oUser.get().getId()));
+        	 return "account";
+         }
+         else {
+        	 return "login";
+         }
+        
     }
 
     @GetMapping
