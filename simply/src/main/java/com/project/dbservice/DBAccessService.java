@@ -141,8 +141,12 @@ public class DBAccessService {
 			cart.get(x).getProduct().setStock(newStock);
 			pRepo.saveAndFlush(cart.get(x).getProduct());
 		}
-		cRepo.deleteAllInBatch(cart);
 		return true;
+	}
+	public List<CartEntity> deleteCart(int uid){
+		List<CartEntity> cart = getCart(uid);
+		cRepo.deleteAll(cart);
+		return cart;
 	}
 	
 	 

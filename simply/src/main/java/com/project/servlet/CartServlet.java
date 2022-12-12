@@ -157,7 +157,7 @@ public class CartServlet {
             {
             	model.addAttribute( "user", user );
 
-                final List<CartEntity> cart = db.getCart( authEmail );
+                final List<CartEntity> cart = db.deleteCart(user.getId());
                 model.addAttribute( "cart", cart );
 
                 double totalPrice = 0;
@@ -172,16 +172,16 @@ public class CartServlet {
             	String subject="Simply Coffee - Order Confirmation";
             	
             	String itemList="";
-            	for (int i=0; i < db.getCart(authEmail).size();i++) {
+            	for (int i=0; i <cart.size();i++) {
             		itemList=itemList+"<tr>\n"
             				+ "<th>"
-            				+ db.getCart(authEmail).get(i).getProduct().getName()
+            				+ cart.get(i).getProduct().getName()
             				+"</th>\n"
             				+ "<th>"
-            				+ db.getCart(authEmail).get(i).getQuantity()
+            				+ cart.get(i).getQuantity()
             				+"</th>\n"
             				+ "<th>"
-            				+ db.getCart(authEmail).get(i).getProduct().getPrice()*db.getCart(authEmail).get(i).getQuantity()
+            				+ cart.get(i).getProduct().getPrice()*cart.get(i).getQuantity()
             				+"</th>\n";
             	}
             	
