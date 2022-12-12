@@ -106,8 +106,8 @@ h6,
   font-weight: 700;
   line-height: 1.2;
   letter-spacing:2px;
-  margin-bottom:20px;
-  color: #454545;
+/*   margin-bottom:20px;
+ */  color: #454545;
 }
 
 h1 {
@@ -1727,6 +1727,7 @@ td.cart-product-quantity .product-quantity i {
 .cart-table tbody tr td.cart-product-total,
 td.cart-product-quantity {
 	text-align: center;
+	
 }
 
 .cart-table .cart-product-action td {

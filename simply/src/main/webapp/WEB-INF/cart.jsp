@@ -78,9 +78,9 @@
                                                     <c:forEach items="${cart}" var="p">
                                                         <tr class="cart-product">
                                                             <td class="cart-product-item flex items-center justify-between">
-                                                                <button data-ctx="${pageContext.request.contextPath}" data-id="${p.product.id}" class="cart-product-remove delete flex items-center justify-center">
+<%--                                                                 <button data-ctx="${pageContext.request.contextPath}" data-id="${p.product.id}" class="cart-product-remove delete flex items-center justify-center">
                                                                     <i class="fa fa-close"></i>
-                                                                </button>
+                                                                </button> --%>
                                                                 <div class="cart-product-img menu-img">
                                                                     <img src="${pageContext.request.contextPath}/images/products/products${p.id}.webp" alt="product"/>
                                                                 </div>
