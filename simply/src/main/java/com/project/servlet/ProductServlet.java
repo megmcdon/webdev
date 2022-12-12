@@ -7,11 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.project.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.project.dbservice.DBAccessService;
 import com.project.entity.ProductEntity;
 import java.util.List;
+import java.util.Optional;
+
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +27,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/products")
 //TODO: Rename to product controller
 public class ProductServlet {
+    private static final String IS_ADMIN_AUTH = "isAdminAuth";
+    private static final String IS_NORMAL_AUTH = "isAuth";
 
     @Autowired
     private DBAccessService db;
@@ -38,7 +44,7 @@ public class ProductServlet {
      * @return
      */
     @GetMapping
-    public String listProducts(@RequestParam(name = "category", required = false, defaultValue = "") String category, Model model) {
+    public String listProducts(@RequestParam(name = "category", required = false, defaultValue = "") String category, Model model, Authentication auth) {
         //only allow permitted categories
         if (!category.isEmpty() && category.toLowerCase().matches("brew|merch|beans")) {
             List<ProductEntity> productList = db.getProductCategory(category);
@@ -54,16 +60,17 @@ public class ProductServlet {
             model.addAttribute("beans", beans);
             model.addAttribute("cat", "All");
         }
-
+        setAuthParameters( model, auth );
         return "products";
 
     }
 
     @GetMapping("/{id}")
-    public String viewProduct(@PathVariable("id") Integer p_id, Model model) {
+    public String viewProduct(@PathVariable("id") Integer p_id, Model model, Authentication auth) {
         ProductEntity product = db.getProduct(p_id);
         //TODO: if product is null show 404
         model.addAttribute("product", product);
+        setAuthParameters( model, auth );
         return "product";
 
     }
@@ -78,4 +85,30 @@ public class ProductServlet {
 
     }
 
+    private void setAuthParameters( Model model, Authentication auth )
+    {
+        if( auth == null )
+        {
+            model.addAttribute( IS_ADMIN_AUTH, false );
+            model.addAttribute( IS_NORMAL_AUTH, false );
+            return;
+        }
+
+        Optional<UserEntity> oUser = db.findUserByEmail( auth.getName() );
+        if( !oUser.isPresent() )
+        {
+            model.addAttribute( IS_ADMIN_AUTH, false );
+            model.addAttribute( IS_NORMAL_AUTH, false );
+            return;
+        }
+
+        if( oUser.get().isAdmin() )
+        {
+            model.addAttribute( IS_ADMIN_AUTH, true );
+            model.addAttribute( IS_NORMAL_AUTH, false );
+            return;
+        }
+        model.addAttribute( IS_ADMIN_AUTH, false );
+        model.addAttribute( IS_NORMAL_AUTH, true );
+    }
 }

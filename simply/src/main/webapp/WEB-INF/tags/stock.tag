@@ -30,7 +30,7 @@
                                 <input name="stock" class="form-control" type="number" step="1" value="${p.stock}" min="0" required="required">
                             </div>
                             <div class="col-sm-4 col-4">
-                                <button type="submit" class="btn-cart"> <i class="fa fa-shopping-cart"></i> </button>
+                                <button type="submit" class="btn-cart"> <i class="fa-solid fa-rotate-right"></i> </button>
                             </div>
                         </div>
                     </form>

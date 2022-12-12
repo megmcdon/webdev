@@ -1,6 +1,4 @@
-
-
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!--begin footer -->
 <div class="footer">
 
@@ -45,7 +43,18 @@
             <div class="col-md-4 padding-bottom-50">
                 <h4>ADMIN LOGIN</h4>
                 <p> Log into the system as an admin to manage the inventories and others etc.</p>
-                <a href="${pageContext.request.contextPath}/login?admin=true" class="btn btn-lg btn-yellow-x-small scrool">Login</a>
+                <c:if test="${isAdminAuth}">
+                    <a href="${pageContext.request.contextPath}/adminPortal" class="btn btn-lg btn-yellow-x-small scrool">Manage Stocks</a>
+                    <a href="${pageContext.request.contextPath}/logout" class="btn btn-lg btn-yellow-x-small scrool">Logout</a>
+                </c:if>
+                <c:if test="${!isAdminAuth}">
+                    <c:if test="${isAuth}">
+                        <i>Already logged in as a customer. Please logout first to login as an admin.</i>
+                    </c:if>
+                    <c:if test="${!isAuth}">
+                        <a href="${pageContext.request.contextPath}/login?admin=true" class="btn btn-lg btn-yellow-x-small scrool">Login</a>
+                    </c:if>
+                </c:if>
             </div>
             <!--end col-md-3 -->
         </div>

@@ -12,7 +12,10 @@
         <main>
             <div class="">
                 <header class="pb-3 mb-4 border-bottom">
-                    <jsp:include page="/WEB-INF/common/nav.jsp" />
+                    <jsp:include page="/WEB-INF/common/nav.jsp">
+                        <jsp:param name="isAuth" value="${isAuth}"/>
+                        <jsp:param name="isAdminAuth" value="${isAdminAuth}"/>
+                    </jsp:include>
                 </header>
 
                 <!--begin about-hero-section -->
@@ -147,7 +150,10 @@
                
 
                 <footer class="pt-3 mt-4 text-muted border-top">
-                    <jsp:include page="/WEB-INF/common/footer.jsp" />
+                    <jsp:include page="/WEB-INF/common/footer.jsp">
+                        <jsp:param name="isAdminAuth" value="${isAdminAuth}"/>
+                        <jsp:param name="isAuth" value="${isAuth}"/>
+                    </jsp:include>
                 </footer>
             </div>
         </main>

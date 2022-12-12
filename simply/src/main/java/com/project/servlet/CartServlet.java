@@ -23,7 +23,8 @@ import javax.mail.MessagingException;
 @RequestMapping("/cart")
 //TODO: Rename to CartController
 public class CartServlet {
-
+    private static final String IS_ADMIN_AUTH = "isAdminAuth";
+    private static final String IS_NORMAL_AUTH = "isAuth";
     private static final long serialVersionUID = 1L;
 
     @Autowired
@@ -55,6 +56,8 @@ public class CartServlet {
             totalPrice = totalPrice + ( o.getQuantity() * o.getProduct().getPrice() );
         }
         model.addAttribute( "totalPrice", totalPrice );
+
+        setAuthParameters( model, auth );
 
         return "cart";
 //            request.getRequestDispatcher("/WEB-INF/cart.jsp").forward(request, response);
@@ -101,14 +104,13 @@ public class CartServlet {
     /**
      * UPDATE ITEM STOCK
      *
-     * @param auth  auth
      * @param pid   pid
      * @param stock stock
      * @return page
      */
     @PutMapping
     @RequestMapping( "/stock" )
-    public String updateStock( Authentication auth, @RequestParam( "pid" ) Integer pid, @RequestParam( "stock" ) Integer stock )
+    public String updateStock( @RequestParam( "pid" ) Integer pid, @RequestParam( "stock" ) Integer stock )
     {
         db.updateStock( pid, stock );
         return "redirect:/adminPortal";
@@ -137,6 +139,8 @@ public class CartServlet {
         }
         model.addAttribute( "totalPrice", totalPrice );
 
+        setAuthParameters( model, auth );
+
         return "checkout";
    
     }
@@ -148,6 +152,8 @@ public class CartServlet {
 
         Optional<UserEntity> oUser = db.findUserByEmail( authEmail );
         if(!oUser.isPresent()) {
+            model.addAttribute( IS_ADMIN_AUTH, false );
+            model.addAttribute( IS_NORMAL_AUTH, false );
         	return "login";
         }
         else if( db.checkout(oUser.get().getId()))
@@ -240,7 +246,18 @@ public class CartServlet {
             model.addAttribute( "totalPrice", totalPrice );
 
              */
-            
+
+            if( oUser.get().isAdmin() )
+            {
+                model.addAttribute( IS_ADMIN_AUTH, true );
+                model.addAttribute( IS_NORMAL_AUTH, false );
+            }
+            else
+            {
+                model.addAttribute( IS_ADMIN_AUTH, false );
+                model.addAttribute( IS_NORMAL_AUTH, true );
+            }
+
             return "confirmation";
             
             
@@ -253,5 +270,32 @@ public class CartServlet {
         }
         
        
+    }
+
+    private void setAuthParameters( Model model, Authentication auth )
+    {
+        if( auth == null )
+        {
+            model.addAttribute( IS_ADMIN_AUTH, false );
+            model.addAttribute( IS_NORMAL_AUTH, false );
+            return;
+        }
+
+        Optional<UserEntity> oUser = db.findUserByEmail( auth.getName() );
+        if( !oUser.isPresent() )
+        {
+            model.addAttribute( IS_ADMIN_AUTH, false );
+            model.addAttribute( IS_NORMAL_AUTH, false );
+            return;
+        }
+
+        if( oUser.get().isAdmin() )
+        {
+            model.addAttribute( IS_ADMIN_AUTH, true );
+            model.addAttribute( IS_NORMAL_AUTH, false );
+            return;
+        }
+        model.addAttribute( IS_ADMIN_AUTH, false );
+        model.addAttribute( IS_NORMAL_AUTH, true );
     }
 }

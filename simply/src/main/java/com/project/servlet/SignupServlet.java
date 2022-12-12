@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.project.dbservice.DBAccessService;
 import com.project.entity.UserEntity;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 import javax.validation.Valid;
 import org.slf4j.Logger;
@@ -30,6 +31,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 //TODO rename to Signup Controller
 public class SignupServlet {
+    private static final String IS_ADMIN_AUTH = "isAdminAuth";
+    private static final String IS_NORMAL_AUTH = "isAuth";
 
     Logger logger = LoggerFactory.getLogger(SignupServlet.class);
     
@@ -37,8 +40,9 @@ public class SignupServlet {
     private DBAccessService db;
     
     @GetMapping
-    public String signup(Model model) {
+    public String signup(Model model, Authentication auth) {
         model.addAttribute("user", new UserEntity());
+        setAuthParameters( model, auth );
         return "signup";
     }
     
@@ -85,5 +89,31 @@ public class SignupServlet {
         // redirect to index after login
 //        request.getRequestDispatcher("/index.jsp").forward(request, response);
     }
-    
+
+    private void setAuthParameters( Model model, Authentication auth )
+    {
+        if( auth == null )
+        {
+            model.addAttribute( IS_ADMIN_AUTH, false );
+            model.addAttribute( IS_NORMAL_AUTH, false );
+            return;
+        }
+
+        Optional<UserEntity> oUser = db.findUserByEmail( auth.getName() );
+        if( !oUser.isPresent() )
+        {
+            model.addAttribute( IS_ADMIN_AUTH, false );
+            model.addAttribute( IS_NORMAL_AUTH, false );
+            return;
+        }
+
+        if( oUser.get().isAdmin() )
+        {
+            model.addAttribute( IS_ADMIN_AUTH, true );
+            model.addAttribute( IS_NORMAL_AUTH, false );
+            return;
+        }
+        model.addAttribute( IS_ADMIN_AUTH, false );
+        model.addAttribute( IS_NORMAL_AUTH, true );
+    }
 }
