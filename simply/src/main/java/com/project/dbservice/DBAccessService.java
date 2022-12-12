@@ -128,6 +128,25 @@ public class DBAccessService {
 	}
 	
 	
+	public boolean checkout(int uid) {
+		ArrayList<CartEntity> cart =(ArrayList<CartEntity>) getCart(uid);
+		for(int x=0; x<cart.size(); x+=1){
+			if(cart.get(x).getProduct().getStock()-cart.get(x).getQuantity()<0) {
+				cRepo.delete(cart.get(x));
+				return false;
+			}
+		}
+		for(int x=0; x<cart.size(); x+=1){
+			int newStock=cart.get(x).getProduct().getStock()-cart.get(x).getQuantity();
+			cart.get(x).getProduct().setStock(newStock);
+			pRepo.saveAndFlush(cart.get(x).getProduct());
+		}
+		cRepo.deleteAllInBatch(cart);
+		return true;
+	}
+	
+	 
+	
 	public String formatTotal(double total) {
 		return String.format("$%,.2f", total);
 	}
@@ -143,7 +162,6 @@ public class DBAccessService {
 		else {
 			return false;
 		}
-		
 	}
 
 

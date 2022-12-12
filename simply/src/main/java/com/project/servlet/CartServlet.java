@@ -147,7 +147,10 @@ public class CartServlet {
         String authEmail = auth.getName();
 
         Optional<UserEntity> oUser = db.findUserByEmail( authEmail );
-        if( oUser.isPresent() )
+        if(!oUser.isPresent()) {
+        	return "login";
+        }
+        else if( db.checkout(oUser.get().getId()))
         {
             UserEntity user = oUser.get();
             try
@@ -236,8 +239,18 @@ public class CartServlet {
             model.addAttribute( "totalPrice", totalPrice );
 
              */
+            
             return "confirmation";
+            
+            
         }
-        return "login";
+        else{
+        	String cartError="Item quantity exceeds stock-- item removed.";
+            model.addAttribute( "cartError", cartError );
+
+        	return showCart(model, auth);
+        }
+        
+       
     }
 }
