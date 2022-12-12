@@ -1,5 +1,6 @@
 package com.project.dbservice;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -126,6 +127,13 @@ public class DBAccessService {
 	public ArrayList<OrdersEntity> getOrders(int uid){
 		return (ArrayList<OrdersEntity>) oRepo.findByUid(uid);
 	}
+	public void createOrder(int uid, double total) {
+		OrdersEntity order = new OrdersEntity();
+		order.setUid(uid);
+		order.setTotal(total);
+		order.setDate(LocalDate.now());
+		oRepo.saveAndFlush(order);
+	}
 	
 	
 	public boolean checkout(int uid) {
@@ -148,6 +156,8 @@ public class DBAccessService {
 		cRepo.deleteAll(cart);
 		return cart;
 	}
+	
+	
 	
 	 
 	
